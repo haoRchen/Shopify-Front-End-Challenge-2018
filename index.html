@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- Designed by Hao Chen 2017 for the Shopify front-end challenge  -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopify front-end challenge 2018</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+
+    <style>
+        * {
+            font-family: Helvetica;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        optgroup,
+        input.input {
+            font-size: 16px;
+        }
+
+        hr {
+            width: 25px;
+            height: 3px;
+            background-color: #7AB55C;
+            border: 0 none;
+        }
+
+        body {
+            position: relative;
+            background-color: #000639;
+        }
+
+        #submitButton {
+            background-color: #5c6ac4;
+            border: 0 none;
+            color: #FFFFFF;
+        }
+
+        u {
+            color: #FFFFFF;
+        }
+
+        .title {
+            color: #FFFFFF;
+            font-size: 24px;
+        }
+
+        .fieldLabel {
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+
+        .hero,
+        .hero-body,
+        #mainColumn {
+            height: 100%;
+        }
+
+        #unsubscribe {
+            vertical-align: bottom;
+            font-size: 13px;
+        }
+
+        #errorMSG {
+            display: none;
+            color: red;
+        }
+
+        #interests,
+        #emailAddress::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #7B7B7B;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        #interests,
+        #emailAddress:-ms-input-placeholder {
+            /* IE 10+ */
+            color: #7B7B7B;
+        }
+    </style>
+
+    <script>
+        function ValidateEmail(emailAddress) {
+            var emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (emailAddress.value.match(emailFormat)) {
+                console.log(
+                    `Email address: ${emailAddress.value} - Interest: ${document.getElementById("interests").value}`
+                );
+                document.getElementById("errorMSG").style.display = "none";
+            } else {
+                document.getElementById("errorMSG").style.display = "block";
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div id="mainColumn" class=" columns is-mobile is-centered">
+                <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-third-fullhd">
+                    <h1 class="title">
+                        Stay up to date with ecommerce trends with Shopify's newsletter
+                    </h1>
+                    <hr>
+                    <br>
+                    <p class="fieldLabel">Subscribe for free marketing tips</p>
+                    <br>
+                    <div class="columns has-text-centered">
+                        <div class="column">
+                            <input id="emailAddress" class="input is-medium" type="email" placeholder="Email Address"></input>
+                        </div>
+                        <div class="column is-narrow">
+                            <div class="select is-medium">
+                                <select id="interests">
+                                    <optgroup>
+                                        <option value="No Interests">Interested in...</option>
+                                        <option value="Front-end">Front-end</option>
+                                        <option value="Android">Android</option>
+                                        <option value="Software Engineer">Software Engineer</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <span>
+                        <p id="errorMSG">Please enter a valid email address</p>
+                    </span>
+                    <br>
+                    <p class="control has-text-centered is-expanded">
+                        <input id="submitButton" class="button is-fullwidth is-medium" onclick="ValidateEmail(document.getElementById('emailAddress'));"
+                            type="submit" value="Sign up now">
+                    </p>
+                </div>
+            </div>
+            <!-- End of Main Column -->
+            <div id="unsubscribe" class="content has-text-centered">
+                <a href="#">
+                    <u>Unsubscribe</u>
+                </a>
+            </div>
+        </div>
+        <!-- End of Hero-Body -->
+    </section>
+    <!-- End of Hero -->
+</body>
+
+</html>
